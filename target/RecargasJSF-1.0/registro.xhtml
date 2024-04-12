@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Generar Recarga</title>
+</h:head>
+<h:body>
+    <h:form id="registroForm">
+        <p:messages id="messages" showDetail="true" closable="true"/>
+        
+        <h3>Generar Recarga</h3>
+        <p:panelGrid columns="2">
+            <p:outputLabel value="Operador:" for="operador"/>
+            <p:selectOneMenu value="#{ventaRecargaBean.nuevaVentaRecarga.operador}">
+                <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione un operador --" />
+                <f:selectItems value="#{ventaRecargaBean.operadores}" var="op" itemValue="#{op}" itemLabel="#{op.nombre}" />
+            </p:selectOneMenu>
+            
+            <p:outputLabel value="Valor:" for="valor"/>
+            <p:inputText id="valor" value="#{ventaRecargaBean.nuevaVentaRecarga.valor}" required="true" label="Valor"/>
+            
+            <p:outputLabel value="Número de recarga:" for="numeroRecarga"/>
+            <p:inputText id="numeroRecarga" value="#{ventaRecargaBean.nuevaVentaRecarga.numeroRecarga}" required="true" label="Número de recarga"/>
+            
+            <!-- Aquí puedes agregar más campos según tus necesidades -->
+
+            <p:commandButton value="Realizar Recarga" action="#{ventaRecargaBean.registrarVentaRecarga}" update="registroForm"/>
+        </p:panelGrid>
+        
+        <!-- Botón para regresar a la pantalla inicial -->
+        <p:button value="Regresar" outcome="index.xhtml"/>
+    </h:form>
+</h:body>
+</html>
