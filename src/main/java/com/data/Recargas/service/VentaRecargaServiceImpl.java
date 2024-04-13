@@ -18,7 +18,7 @@ public class VentaRecargaServiceImpl implements VentaRecargaService{
     @Override
     public void registrarVentaRecarga(VentaRecarga ventaRecarga) {
         ventaRecargaDAO.insertVentaRecarga(ventaRecarga);
-    }
+    }  
 
     @Override
     public List<VentaRecarga> generarReporteVentasPorOperador(Operador operador) {
@@ -33,6 +33,11 @@ public class VentaRecargaServiceImpl implements VentaRecargaService{
     @Override
     public List<Operador> obtenerOperadores() {
         return ventaRecargaDAO.obtenerOperadores();
+    }
+    
+    @Override
+    public List<Persona> obtenerPersonas() {
+        return ventaRecargaDAO.obtenerPersonas();
     }
     
 }

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
     <title>Reporte de Ventas por Persona</title>
@@ -9,17 +10,34 @@
 <h:body>
     <h:form>
         <h3>Reporte de Ventas por Persona</h3>
-        <p:dataTable value="#{ventaRecargaBean.reportePorPersona}" var="venta">
-            <p:column headerText="ID">
-                <h:outputText value="#{venta.id}"/>
+        
+        <h:panelGrid columns="3">
+            <p:outputLabel value="Vendedor:" />
+            <p:selectOneMenu id="idPersona" value="#{ventaRecargaBean.personaSeleccionada.idPersona}" required="true">
+                <f:selectItem itemLabel="Seleccionar vendedor" itemValue="#{null}" />
+                <f:selectItems value="#{ventaRecargaBean.personas}" var="persona" itemLabel="#{persona.nombre}" itemValue="#{persona.idPersona}" />
+            </p:selectOneMenu>
+            
+            <p:spacer />
+            <p:button value="Regresar" outcome="index.xhtml" />
+            
+            <p:spacer />
+            <p:commandButton value="Buscar" action="#{ventaRecargaBean.buscarVentasPorPersona}" update="tablaVentas" />
+            
+        </h:panelGrid>
+        
+        <br/>
+        
+        <p:dataTable id="tablaVentas" value="#{ventaRecargaBean.reportePorPersona}" var="venta">
+            <p:column headerText="Persona">
+                <h:outputText value="#{venta.idPersona}" />
             </p:column>
             <p:column headerText="Cantidad">
-                <h:outputText value="#{venta.cantidad}"/>
+                <h:outputText value="#{venta.cantidad}" />
             </p:column>
             <p:column headerText="Valor">
-                <h:outputText value="#{venta.valor}"/>
+                <h:outputText value="#{venta.valor}" />
             </p:column>
-            <!-- Agregar más columnas según sea necesario -->
         </p:dataTable>
     </h:form>
 </h:body>

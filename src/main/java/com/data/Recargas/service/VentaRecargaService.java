@@ -23,4 +23,7 @@ public interface VentaRecargaService {
     //Carga el listado de operadores
     List<Operador> obtenerOperadores();
     
+    //Carga el listado de Personas (vendedore)
+    List<Persona> obtenerPersonas();
+    
 }

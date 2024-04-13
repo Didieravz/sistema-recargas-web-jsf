@@ -23,21 +23,26 @@ public class VentaRecargaDAOImpl implements VentaRecargaDAO{
 
     @Override
     public List<VentaRecarga> getVentasPorOperador(Operador operador) {
-        return entityManager.createQuery("SELECT v FROM VentaRecarga v WHERE v.operador = :operador", VentaRecarga.class)
-                            .setParameter("operador", operador)
+        return entityManager.createQuery("SELECT v FROM VentaRecarga v WHERE v.idOperador = :idOperador", VentaRecarga.class)
+                            .setParameter("idOperador", operador.getIdOperador())
                             .getResultList();
     }
 
     @Override
     public List<VentaRecarga> getVentasPorPersona(Persona persona) {
-        return entityManager.createQuery("SELECT v FROM VentaRecarga v WHERE v.persona = :persona", VentaRecarga.class)
-                            .setParameter("persona", persona)
+        return entityManager.createQuery("SELECT v FROM VentaRecarga v WHERE v.idPersona = :idPersona", VentaRecarga.class)
+                            .setParameter("idPersona", persona.getIdPersona())
                             .getResultList();
     }
     
     @Override
     public List<Operador> obtenerOperadores() {
         return entityManager.createQuery("SELECT o FROM Operador o", Operador.class).getResultList();
+    }
+    
+    @Override
+    public List<Persona> obtenerPersonas() {
+        return entityManager.createQuery("SELECT p FROM Persona p", Persona.class).getResultList();
     }
     
 }

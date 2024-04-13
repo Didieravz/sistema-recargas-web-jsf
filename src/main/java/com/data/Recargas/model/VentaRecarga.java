@@ -1,30 +1,35 @@
 package com.data.Recargas.model;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "ventarecarga")
 public class VentaRecarga {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVenta;
 
-    @ManyToOne
-    private Persona persona;
+    @Column(name = "idPersona")
+    private int idPersona;
 
-    @ManyToOne
-    private Operador operador;
+    @Column(name = "idOperador")
+    private int idOperador;
 
     private double valor;
     
     private int cantidad;
     
-    private int numeroRecarga;
+    private String numeroRecarga;
     
     private Date fecha;
 
@@ -36,11 +41,11 @@ public class VentaRecarga {
         this.fecha = fecha;
     }
 
-    public int getNumeroRecarga() {
+    public String getNumeroRecarga() {
         return numeroRecarga;
     }
 
-    public void setNumeroRecarga(int numeroRecarga) {
+    public void setNumeroRecarga(String numeroRecarga) {
         this.numeroRecarga = numeroRecarga;
     }
 
@@ -60,21 +65,19 @@ public class VentaRecarga {
         this.idVenta = idVenta;
     }
 
-
-    public Persona getPersona() {
-        return persona;
+    public int getIdPersona() {
+        return idPersona;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
+    }
+    public int getIdOperador() {
+        return idOperador;
     }
 
-    public Operador getOperador() {
-        return operador;
-    }
-
-    public void setOperador(Operador operador) {
-        this.operador = operador;
+    public void setIdOperador(int idOperador) {
+        this.idOperador = idOperador;
     }
 
     public double getValor() {

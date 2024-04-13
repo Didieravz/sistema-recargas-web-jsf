@@ -9,3 +9,4 @@ com\data\Recargas\dao\VentaRecargaDAO.class
 com\data\Recargas\model\Persona.class
 com\data\Recargas\model\Operador.class
 com\data\Recargas\model\VentaRecarga.class
+com\data\Recargas\model\VentaRecargaDTO.class

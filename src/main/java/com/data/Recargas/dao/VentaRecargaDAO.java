@@ -22,4 +22,6 @@ public interface VentaRecargaDAO {
     List<VentaRecarga> getVentasPorPersona(Persona persona);
     
     List<Operador> obtenerOperadores();
+    
+    List<Persona> obtenerPersonas();
 }

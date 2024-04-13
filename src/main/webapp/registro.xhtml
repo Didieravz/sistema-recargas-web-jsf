@@ -13,25 +13,31 @@
         
         <h3>Generar Recarga</h3>
         <p:panelGrid columns="2">
-            <p:outputLabel value="Operador:" for="operador"/>
-            <p:selectOneMenu value="#{ventaRecargaBean.nuevaVentaRecarga.operador}">
+            <p:outputLabel  value="Operador:"/>
+            <p:selectOneMenu id="operador" value="#{ventaRecargaBean.ventaRecargaDTO.idOperador}" required="true">
                 <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione un operador --" />
-                <f:selectItems value="#{ventaRecargaBean.operadores}" var="op" itemValue="#{op}" itemLabel="#{op.nombre}" />
+                <f:selectItems value="#{ventaRecargaBean.operadores}" var="op" itemValue="#{op.idOperador}" itemLabel="#{op.nombre}" />
             </p:selectOneMenu>
-            
+
             <p:outputLabel value="Valor:" for="valor"/>
-            <p:inputText id="valor" value="#{ventaRecargaBean.nuevaVentaRecarga.valor}" required="true" label="Valor"/>
+            <p:inputText id="valor" value="#{ventaRecargaBean.ventaRecargaDTO.valor}" required="true" label="Valor"/>
             
             <p:outputLabel value="Número de recarga:" for="numeroRecarga"/>
-            <p:inputText id="numeroRecarga" value="#{ventaRecargaBean.nuevaVentaRecarga.numeroRecarga}" required="true" label="Número de recarga"/>
+            <p:inputText id="numeroRecarga" value="#{ventaRecargaBean.ventaRecargaDTO.numeroRecarga}" required="true" label="Número de recarga"/>
             
-            <!-- Aquí puedes agregar más campos según tus necesidades -->
-
-            <p:commandButton value="Realizar Recarga" action="#{ventaRecargaBean.registrarVentaRecarga}" update="registroForm"/>
+            <p:outputLabel value="Usuario del sistema:" for="idPersona"/>
+            <p:inputText id="idPersona" value="#{ventaRecargaBean.ventaRecargaDTO.idPersona}" required="true" label="Usuario sistema"/>
+            
+            <br/>
+            <p:commandButton value="Realizar Recarga" action="#{ventaRecargaBean.registrarVentaRecarga}" 
+                             update="registroForm" process="@form" styleClass="btn"/>
+                             
         </p:panelGrid>
+        <br/>
         
         <!-- Botón para regresar a la pantalla inicial -->
         <p:button value="Regresar" outcome="index.xhtml"/>
     </h:form>
+    
 </h:body>
 </html>
