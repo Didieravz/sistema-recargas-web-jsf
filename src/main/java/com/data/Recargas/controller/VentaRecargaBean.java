@@ -60,7 +60,7 @@ public class VentaRecargaBean {
     public void registrarVentaRecarga() {
         // Validar que la cantidad y el valor sean mayores que cero
         if (ventaRecargaDTO.getNumeroRecarga() == null || 
-                ventaRecargaDTO.getValor() <= 0) {
+                ventaRecargaDTO.getValor().isEmpty()) {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, 
                     "Error", "El numero de recarga y el valor deben ser mayores que cero.");
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -68,7 +68,7 @@ public class VentaRecargaBean {
         }
                 
         //Pasa la informacion que sera persistida de la venta de la recarga
-        nuevaVentaRecarga.setValor(ventaRecargaDTO.getValor());
+        nuevaVentaRecarga.setValor(Double.parseDouble(ventaRecargaDTO.getValor()));
         nuevaVentaRecarga.setNumeroRecarga(ventaRecargaDTO.getNumeroRecarga());
         nuevaVentaRecarga.setIdPersona(ventaRecargaDTO.getIdPersona());
         nuevaVentaRecarga.setIdOperador(ventaRecargaDTO.getIdOperador());

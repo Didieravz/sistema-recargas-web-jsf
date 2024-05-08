@@ -4,7 +4,7 @@ public class VentaRecargaDTO {
     
     private int idOperador;
     private String nombre;
-    private double valor;
+    private String valor;
     private String numeroRecarga;
     private int idPersona;
 
@@ -27,11 +27,11 @@ public class VentaRecargaDTO {
         this.nombre = nombre;
     }
 
-    public double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
